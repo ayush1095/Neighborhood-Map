@@ -1,0 +1,104 @@
+html, body { 
+	height: 100%;
+	margin: 0px ; 
+	padding-left: 10px;
+	padding-right: 10px;
+    background: 
+	linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+	linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+	linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+	linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+	linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+	linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+	background-color: #131313;
+	background-size: 20px 20px;
+	}
+	
+input {
+	width:20%;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.44);
+    border: 1px solid black;
+	position: relative;
+	padding-bottom: 2px;
+	margin-bottom: 2px;
+}
+
+h1 {
+	color:white;
+}
+
+@media only screen and (min-width : 506px) {
+	#view-list {
+		display: block !important;
+	}
+}
+
+
+#display-area {
+ 	height: 100%; 
+ 	width : 100%; 
+ 	margin: 5px;
+ 	padding: 5px;
+ }	
+
+#view-list {
+	top: 30%;
+	right: 0px;
+	position: absolute;
+	font-weight: bold;
+	color: white;
+	background: 
+	linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+	linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+	linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+	linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+	linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+	linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+	background-color: #131313;
+	background-size: 20px 20px;
+    box-shadow: 10px 4px 13px rgba(0,0,0,0.45), 5px 10px 10px rgba(0,0,0,0.64);
+    border: 1px solid black;
+
+}
+
+#four-view {
+    padding :5px;
+    color:grey;
+	display : none;
+	text-align: center;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+}
+
+.hidden {
+	display : none;
+}
+
+.list-item:hover { 
+	background-color: grey;
+}
+
+#view-list-toggle { 
+	display : none;
+	background-color: grey;
+	padding :5px;
+
+}
+
+@media only screen and (max-width : 528px) {
+h1 {
+	display: none;
+	}
+#display-area {
+	height:100%;
+	}
+#four-view {
+  	padding-top: 10px;
+  	margin-top: 10px;
+    }
+#view-list {
+ 	font-size: 10px;
+    }
+}
