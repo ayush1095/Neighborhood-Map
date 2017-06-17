@@ -12,13 +12,12 @@
 
     <h1 align="center">Neighbourhood Project - Udacity</h1>
 
-    <form action="/" align="right">
-        <input data-bind="value: query" maxlength="100" />
-        <button data-bind="click: searchMarkers">Search List</button>
-    </form>
+    
+    <input data-bind="textInput: query" placeholder="search markers here">
+    
 
     <div id="four-view" class="rating">
-        <strong data-bind="text: fName"></strong> is <strong data-bind="text: fRating" style="color:white;"></strong> by foursquare.
+        <strong data-bind="text: fName"></strong>  <strong data-bind="text: fRating" style="color:white;"></strong>
     </div>
 
     <div id="view-list-toggle">List View</div>
@@ -27,7 +26,7 @@
 
     <div id="view-list">
         <table>
-            <tbody data-bind="foreach: markers()">
+            <tbody data-bind="foreach: filteredMarkers">
                 <tr data-bind="click: $root.selectItem">
                     <td data-bind="text: title, css : { hidden : isHidden() }" class='list-item'></td>
                 </tr>

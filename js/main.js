@@ -2,14 +2,14 @@
   var map;
   var locDetails;
   var initMap = function() {
-  
+
       map = new google.maps.Map(document.getElementById('display-area'), {
           center: new google.maps.LatLng(30.4100, 77.98000),
           zoom: 10,
 
       });
 
-      
+
       locDetails = [{
               loc: new google.maps.LatLng(30.416333, 77.968585),
               title: "UPES Dehradun",
@@ -109,7 +109,6 @@
 
 
 
-  
 
   function MVM() {
       var temp = []; //will be used to store the markers
@@ -127,26 +126,24 @@
               self.markers()[i].startState();
       };
 
-      self.searchMarkers = function() {
-          // find a list of markers that match the string
-          var search_matches = [];
-          var search_not_match = [];
-          var query = self.query();
-          for (var k = 0; k < self.markers().length; k++) {
-              var mrkr = self.markers()[k];
-              if (mrkr.matches(query))
-                  search_matches.push(mrkr);
-              else
-                  search_not_match.push(mrkr);
-          }
-          for (i = 0; i < search_matches.length; i++)
-              search_matches[i].matchesSearch();
-          
+      self.filteredMarkers = ko.computed(function() {
+          var query = self.query().toLowerCase();
+          // return a matching subset of location objects
+          return ko.utils.arrayFilter(self.markers(), function(marker) {
+              var title = marker.title.toLowerCase();
+              var match = title.indexOf(query) >= 0; // true or false
+              marker.googleMarker.setVisible(match); // true or false
+              //console.log(title, query, match);
+              // if match is true, the item aka location object will be part of the matching subset
+              return match;
+          });
 
-      };
+      });
       self.selectItem = function(item) {
           item.selected();
       };
+
+
   }
 
 
@@ -184,7 +181,7 @@
           self.toggleBounce(self.googleMarker);
           //animate the markers when loaded.
           self.clicked();
-  
+
       });
 
       self.selected = function() {
@@ -208,9 +205,9 @@
                       model.fName(res.name);
                       model.fRating(res.rating);
                       if (!res.rating) {
-                          model.fRating('not yet rated');
+                          model.fRating('is not yet rated by foursqurare.');
                       } else
-                          model.fRating('rated as ' + res.rating);
+                          model.fRating(' is rated as ' + res.rating+'by foursquare.');
                   })
 
               .error(function() {
@@ -224,7 +221,7 @@
               marker.setAnimation(null);
           } else {
               marker.setAnimation(google.maps.Animation.BOUNCE);
-                        }
+          }
       };
 
       self.matches = function(q) {
@@ -237,7 +234,7 @@
           self.isHidden(false);
           self.googleMarker.setVisible(true);
           self.infowindow.open(map, self.googleMarker);
-          $('#four-view').css('display', 'none');
+         // $('#four-view').css('display', 'none');
           self.clicked();
       };
 
@@ -245,14 +242,14 @@
           self.isHidden(false);
           self.googleMarker.setVisible(true);
           self.infowindow.close();
-          $('#four-view').css('display', 'none');
+         // $('#four-view').css('display', 'none');
       };
 
       self.doNotMatch = function() {
           self.isHidden(true);
           self.googleMarker.setVisible(false);
           self.infowindow.close();
-          $('#four-view').css('display', 'none');
+         // $('#four-view').css('display', 'none');
       };
 
       self.clicked = function() {
@@ -263,7 +260,7 @@
               self.googleMarker.setAnimation(null);
           }, 1400);
           self.infowindow.open(map, self.googleMarker);
-          $('#four-view').css('display', 'block');
+         // $('#four-view').css('display', 'block');
 
       };
 

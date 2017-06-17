@@ -44,7 +44,7 @@ h1 {
 #four-view {
     padding: 5px;
     color: grey;
-    display: none;
+    display: block;
     text-align: center;
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
