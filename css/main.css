@@ -30,6 +30,7 @@ h1 {
     padding: 5px;
 }
 #view-list {
+    display: block;
     top: 30%;
     right: 0px;
     position: absolute;
